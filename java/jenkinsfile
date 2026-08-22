@@ -1,0 +1,29 @@
+pipeline {
+
+    agent {
+        docker {
+            image 'eclipse-temurin:17-jdk'
+        }
+    }
+
+    stages {
+        stage('Test') {
+            steps {
+                sh java -version
+          }
+      }
+
+        stage('Compile') {
+            steps {
+                sh 'javac hello.java'
+            }
+        }
+
+        stage('Run') {
+            steps {
+                sh 'java hello'
+            }
+        }
+
+    }
+}
